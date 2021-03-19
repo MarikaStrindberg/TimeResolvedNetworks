@@ -1406,7 +1406,7 @@ save MN_AREAS MNarea MNaCount MNareaSort MNaCountSort
 %MN number, total nr of areas of the MN, percent of total netw areas,
 %weight for relative activation
 load MN_AREAS
-load NetNameSUM
+load NetName
 load MetaProbMaps
 load AreaParcelA236_N9
 load SortedHierOrd
@@ -1876,16 +1876,9 @@ for s=1:S
     CorrSNraw(s,:)=[r,p]; %Raw state vector versus SN vector
     
 end
-save States StatesAllMN MeanStateMN MeanStateChangeMN MaxminMN StatesAllSN MeanStateSN MeanStateChangeSN MaxminSN StatesAllRaw MeanStateRaw MeanStateChangeRaw MaxminRaw CorrMSR
+save States StatesAllMN MeanStateMN MeanStateChangeMN MaxminMN StatesAllSN MeanStateSN MeanStateChangeSN MaxminSN StatesAllRaw MeanStateRaw MeanStateChangeRaw MaxminRaw 
 
 
-std(MaxminMN(:,1))
-min(MaxminMN(:,2))
-
-mean(MeanStateMN)
-max(MeanStateMN)
-min(MeanStateMN)
-std(MeanStateMN)
 
 %Calculate average constrast witin recurrence plots
 
