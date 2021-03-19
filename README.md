@@ -33,7 +33,7 @@ The BrainNet viewer was used for visualization of networks: www.nitrc.org/projec
 
 MaxVox.mat is used for the visualisation of subnetworks (SNs) and meta-networks (MNs).
 
-AreaParcelA236_N9.mat contains the network number as defined by the parcellation (Schaefer 7 parcellation combined with the subcortical portion of the Brainnetome atlas) in the first column and area number in the second column.  Details on the parcellation can be found in Parcellation.xlsx
+AreaParcelA236_N9.mat contains the network number as defined by the parcellation (Schaefer200 7 network parcellation combined with the subcortical portion of the Brainnetome atlas) in the first column and area number in the second column.  Details on the parcellation can be found in Parcellation.xlsx. The parcellation is contained in Parcellation236mixed.zip.
 
 NetNames.mat matches network number with network name. 
 
