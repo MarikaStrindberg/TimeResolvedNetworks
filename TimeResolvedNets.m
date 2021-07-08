@@ -372,10 +372,14 @@ for k=1:L
     QR=[R Qr'];
     QRs=sortrows(QR,3,'descend');
     
+    Ord=[];
     for i=1:N
-        r=[];
-        [r c]=find(QRs==i);
-        Ord(i)=r(1) ;
+        temp=[];r=[];tempmax=[];
+        [r c]=find(QRs==i); 
+        temp=QRs(r,:);
+        tempmax=max((QRs(r,3))); % BUGfix added 6 july
+        [rx ~]=find(temp==tempmax) %
+        Ord(i)=r(rx(1));   %
     end
     Ord=unique(Ord); % Remove dublicates
     rr=find(Ord>length(R));
@@ -413,8 +417,10 @@ f1=[row col];
 Hh=unique(nonzeros(QM)); %Different frequencies
 HH=sort(Hh,'descend');
 
-
 CG=zeros(L,N);
+
+if numel(HH)>1 % Added to accomodate the possibility that all Louvain solutions create exactly the same TOP pairs
+
 kk=[];
 TOP=[];
 TOPs=[];
@@ -438,16 +444,21 @@ for n=1:N
 end
 SumCG=max(CG');
 [r d]=find(SumCG'==min(SumCG));
+rof=r(1);
 
-TOP=squeeze(QT(r(1),:,:));
-TOPS=squeeze(QRtopS(r(1),:,:));
-if S>1
-    Louv=squeeze(Louvain_s(r(1),:,:,:))
-else
-    Louv(1,:,:)=squeeze(Louvain_s(r(1),:,:,:));
+else  % if all Louvain solutions give exactly the same TOP pairs
+   rof=1;
 end
 
-V=squeeze(Mean_matrix(r(1),:,:));
+TOP=squeeze(QT(rof,:,:));
+TOPS=squeeze(QRtopS(rof,:,:));
+if S>1
+    Louv=squeeze(Louvain_s(rof,:,:,:))
+else
+    Louv(1,:,:)=squeeze(Louvain_s(rof,:,:,:));
+end
+
+V=squeeze(Mean_matrix(rof,:,:));
 C=mean(mean(V))*diag(diag(V));
 V=V-diag(diag(V));
 V1=V+C;
