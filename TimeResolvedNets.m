@@ -917,7 +917,7 @@ for OV=ov:SNC_size
         delete SNC8_TS*
         
         if u==0
-           display(sprintf('At least one SN did not complete internal coherence at OV = %d, a search for an optimal OV is initiated ',ov) 
+           display(sprintf('At least one SN did not complete internal coherence at OV = %d, a search for an optimal OV is initiated ',ov) )
         end
     end
     
